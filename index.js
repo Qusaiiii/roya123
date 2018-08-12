@@ -12630,5 +12630,5 @@ message.member.addRole(message.guild.roles.find("name", "100"));
 	
 });
   
-client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlBoQA.W5jRixgjcBv2byvQObpkndJ4j-M');
+client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHYFQ.TabXTjpHsdF5-qYUOa4EWu-6Al4');
 
