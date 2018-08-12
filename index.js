@@ -11,6 +11,7 @@ const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
+const channels = {};
 client.on('voiceStateUpdate',async function(oldmember, member) {
 if(member.user.bot) return;
 if(member.voiceChannel === undefined && channels[member.id]) {
