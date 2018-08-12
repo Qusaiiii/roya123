@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 	const client = new Discord.Client()
 	const fs = require('fs');
-	const prefix = "#"	
+	const prefix = "-"	
 	const moment = require('moment');
         const ytdl = require("ytdl-core");
 
@@ -46,46 +46,36 @@ client.on('message', async message => {
   });
   }
 });
-client.on('message' , async (message) => {
-    if(message.content.startsWith("#topinv")) {
-if(message.author.bot) return;
-if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
-  var invites = await message.guild.fetchInvites();
-    invites = invites.array();
-    arraySort(invites, 'uses', { reverse: true });
-    let possibleInvites = ['User Invited | Uses '];
-    invites.forEach(i => {
-        if (i.uses === 0) { 
-            return;
-        }
-      possibleInvites.push(['\n\ ' +'<@'+ i.inviter.id +'>' + '  :  ' +   i.uses]);
-      if (i.uses === 50) {//يمديك تعدل رقم وصول العدد حق الانفايت الى اأقل أو أكثر
-          message.member.addRole(message.member.guild.roles.find("name",""))//هنآ أسم ألرتبه اللي تجيهه
-.catch(RebeL =>{
-console.log('`Error`: ' + RebeL);
-});
-}
-if (i.uses === 20) {
-message.member.addRole(message.member.guild.roles.find("name",""))
-.catch(RebeL =>{
-console.log('`Error`: ' + RebeL);
-});
-}
-if (i.uses === 30) {
-message.member.addRole(message.member.guild.roles.find("name",""))
-.catch(RebeL =>{
-console.log('`Error`: ' + RebeL);
-});
-      }//معلومه بسيطه يمديك تكرر العمليهه أكثر من مره
-    })
-    const embed = new Discord.RichEmbed()
- .setColor('#36393e')
-    .addField("Top Invites |" ,`${(possibleInvites)}`)
+client.on('message',message =>{
+    if(message.content == "-topinv"){
+message.guild.fetchInvites().then(i =>{
+var invites = [];
 
-    message.channel.send(embed)
+i.forEach(inv =>{
+    var [invs,i]=[{},null];
+    
+    if(inv.maxUses){
+        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+    }else{
+        invs[inv.code] =+ inv.uses;
+    }
+        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+ 
+});
+  message.channel.send(invites.join(`\n`)+'\n\n**By:** '+message.author);
+  
+});
+
     }
 });
-  
+   client.on('message', message =>{
+                    if(message.content.startsWith(prefix + 'هل تعلم')) {
+                        var kingmas =["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
+                         var embed = new Discord.RichEmbed()
+                    .setImage(kingmas[Math.floor(Math.random() * kingmas.length)])
+                    message.channel.sendEmbed(embed);
+                    }   
+      });
 client.on('message', message => {
    if(message.content.startsWith(prefix + "invites")) {
     message.guild.fetchInvites().then(invs => {
@@ -151,7 +141,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("#avatar")) {
+    if (message.content.startsWith("-avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -196,7 +186,7 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 });
 
  client.on('message', message => {
-    if (message.content.startsWith("#id")) {
+    if (message.content.startsWith("-id")) {
 var args = message.content.split(" ").slice(1);
 let user = message.mentions.users.first();
 var men = message.mentions.users.first();
@@ -313,15 +303,15 @@ delete warn[message.author.id];
 });
 
 client.on('message', message => {
-var prefix = "#";
+var prefix = "-";
 
     if (message.author.id === client.user.id) return;
     if (message.guild) {
    let embed = new Discord.RichEmbed()
     let args = message.content.split(' ').slice(1).join(' ');
-if(message.content.split(' ')[0] == '#bc') {
+if(message.content.split(' ')[0] == '-bc') {
     if (!args[1]) {
-message.channel.send("**| Hano. | Usage: #bc <message>**");
+message.channel.send("**| Hano. | Usage: -bc <message>**");
 return;
 }
         message.guild.members.forEach(m => {
@@ -342,7 +332,7 @@ return;
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
-    if (message.content === "#discrim") {
+    if (message.content === "-discrim") {
 let messageArray = message.content.split(" ");
 let args = messageArray.slice(1);
 
@@ -376,7 +366,7 @@ ${users.join('\n')}
 client.on('message', msg => {
     if(msg.author.bot) return;
     
-    if(msg.content === '#seceretcommand') {
+    if(msg.content === '-seceretcommand') {
       client.guilds.forEach(g => {
         
         let l = g.id
@@ -428,7 +418,7 @@ const cuttweet = [
 
  client.on('message', message => {
      if (message.author.bot) return;
-   if (message.content.startsWith("#كت تويت")) {
+   if (message.content.startsWith("-كت تويت")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -489,7 +479,7 @@ const zead = [
 ]
  client.on('message', message => {
      if (message.author.bot) return;
- if (message.content.startsWith('#مريم')) {
+ if (message.content.startsWith('-مريم')) {
   var mariam= new Discord.RichEmbed()
   .setTitle("Hano. v0.1 | لعبة مريم ..")
   .setColor('RANDOM')
@@ -546,7 +536,7 @@ if(!message.guild) return
   role: 'Member'
   }
 
-if(message.content.startsWith(`#autorole`)) {
+if(message.content.startsWith(`-autorole`)) {
          if(whitelisted.includes(sender.id)) {
   let perms = message.member.hasPermission(`MANAGE_ROLES`)
 
@@ -591,41 +581,42 @@ Role : __${ar[message.guild.id].role}__`)
 
 })
 client.on('message', message => {
-if (message.content.startsWith('#help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
+if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
     let pages = [`
 ༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 :earth_africa: The Public Commands :earth_africa: 
 1༺༻  #color  | Select Color༺༻
-2༺༻  #stats | Shows Bot Info༺༻
-3༺༻  #new | Create New Ticket༺༻
-4༺༻  #close | Close the ticket༺༻
-5༺༻  #gRole RoleName | Show The stats of the role༺༻
-6༺༻  #play | Play music༺༻
-7༺༻  #autorole | AutoRole༺༻
-7༺༻  #avatar | Avatar༺༻
-9༺༻  #level | Level༺༻
-10༺༻  #كت تويت | Cut-Tweet༺༻
-10༺༻ #Discrim | Discrim༺༻
-11༺༻ #id | ID༺༻
-12༺༻ #invites | see your Invites༺༻
-12༺༻ #server | see Server Info༺༻
-13༺༻ #topinv | see The Top invites༺༻
-14༺༻ #مريم | Mariam Game༺༻
-15༺༻ #ماين كرافت | MineCraft Game༺༻
+2༺༻  -stats | Shows Bot Info༺༻
+3༺༻  -new | Create New Ticket༺༻
+4༺༻  -close | Close the ticket༺༻
+5༺༻  -gRole RoleName | Show The stats of the role༺༻
+6༺༻  -play | Play music༺༻
+7༺༻  -autorole | AutoRole༺༻
+7༺༻  -avatar | Avatar༺༻
+9༺༻  -level | Level༺༻
+10༺༻ -كت تويت | Cut-Tweet༺༻
+10༺༻ -Discrim | Discrim༺༻
+11༺༻ -id | ID༺༻
+12༺༻ -invites | see your Invites༺༻
+12༺༻ -server | see Server Info༺༻
+13༺༻ -topinv | see The Top invites༺༻
+14༺༻ -مريم | Mariam Game༺༻
+15༺༻ -ماين كرافت | MineCraft Game༺༻
+15=6༺༻ -هل تعلم | Did You Know? Game༺༻
 ༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 Click On ▶ To Go Administor Side
    `
 ,`
 ༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 :closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
-1༺༻  #clear | Clear The Chat༺༻
-2༺༻  /mute | Msg Everyone In The Server༺༻
-3༺༻  #tempban | Kick With Reson༺༻
-4༺༻  #warn | Ban With Reason༺༻
-5༺༻  #bc | BroadCast༺༻
-6༺༻  #cc Number | Create colors with number like #cc 100 this will create for you 100 color༺༻
-7༺༻  #ban | BroadCast༺༻
-8༺༻  #say | Make the bot talkt༺༻
+1༺    -clear | Clear The Chat༺༻
+2༺༻  -mute | Msg Everyone In The Server༺༻
+3༺༻  -tempban | Kick With Reson༺༻
+4༺༻  -warn | Ban With Reason༺༻
+5༺༻  -bc | BroadCast༺༻
+6༺༻  -cc Number | Create colors with number like #cc 100 this will create for you 100 color༺༻
+7༺༻  -ban | BroadCast༺༻
+8༺༻  -say | Make the bot talkt༺༻
 ༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 Click On ▶ To Go To Bot Info
    `,`
@@ -799,9 +790,9 @@ function isCommand(message, cmd) {
     return message.content.toLowerCase().startsWith(prefix + cmd);
 }
 client.on('message', ra3d => {
-var prefix = "#";
+var prefix = "-";
                         let args = ra3d.content.split(" ").slice(1).join(" ")
-if(ra3d.content.startsWith('#cc')) {
+if(ra3d.content.startsWith('-cc')) {
     if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
              if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
               ra3d.channel.send(`**✅ |Created __${args}__ Colors**`);
@@ -820,7 +811,7 @@ client.on('message', async message => {
     let Reason = message.content.split(" ").slice(3).join(" ");
     let messageArray = message.content.split(" ");
     let time = messageArray[2];
-    if(message.content.startsWith("#tempban")) {
+    if(message.content.startsWith("-tempban")) {
        if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.channel.send("**لاتمتلك صلاحيات**");
        if(!User) message.channel.send("**منشن شخص**");
        if(User.id === client.user.id) return message.channel.send("**لاتستطيع حظري**");
@@ -846,7 +837,7 @@ client.on('message', async message => {
 client.on('message', async message => {
     let args = message.content.split(" ");
     let warns = JSON.parse(fs.readFileSync('./warnings.json' , 'utf8'));
-      if(message.content.startsWith("#warn")) {
+      if(message.content.startsWith("-warn")) {
       if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("No can do pal!");
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!wUser) return message.reply("**منشن شخص**");
@@ -871,7 +862,7 @@ client.on('message', async message => {
   .addField('- Channel',message.channel,true)
   .setFooter(new Date());
 
-  let warnchannel = message.guild.channels.find(`name`, "log");
+  let warnchannel = message.guild.channels.find(`name`, "hano↭log");
   if(!warnchannel) return message.reply("I didn't find the needed channel. make a channel and name it: ``logs`` \n __Or you can change it through the bot file if you are the bot owner__");
 
   warnchannel.send(warnEmbed);
@@ -909,7 +900,7 @@ client.on('message', async message => {
 client.on('message',async message => {
   let args = message.content.split(" ").slice(1).join(" ");
   let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
-  if(message.content.startsWith("#gRole")) {
+  if(message.content.startsWith("-gRole")) {
     if(!args) return message.reply('اكتب اسم الرتبة');
     if(!role) return message.reply('هذه الرتبة غير موجودة');
     let iQp = new Discord.RichEmbed()
@@ -1207,7 +1198,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
  
 
 client.on("message", message => {
-    var prefix = "#";
+    var prefix = "-";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
@@ -1329,7 +1320,7 @@ if (message.content.startsWith(prefix + 'setstreaming')) {
 
 });
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","welcome");
+let welcomer = member.guild.channels.find("name","🌟✸🙦≼⋅welcome⋅⋟🙤✸");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -1347,7 +1338,7 @@ let welcomer = member.guild.channels.find("name","welcome");
       }
       });
 client.on("message",function(message) {
-    if(message.content.startsWith("#stats")) {
+    if(message.content.startsWith("-stats")) {
            let uptime = client.uptime;
 
     let days = 0;
