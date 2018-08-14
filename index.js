@@ -12567,7 +12567,7 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-bot.on("message", async message => {
+client.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
 
@@ -12577,12 +12577,11 @@ bot.on("message", async message => {
 
     if(!command.startsWith(prefix)) return;
 
-    let cmd = bot.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(bot, message, args);
+    if(client) client.run(client, message, args);
      
 });
 
-bot.on('message',message => {
+client.on('message', message => {
  if(message.content.startsWith(prefix + 'addrole')) {
    if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
