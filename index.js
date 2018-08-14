@@ -12593,6 +12593,7 @@ client.on('message', message => {
               };
               }else {
                 return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
-          };
+              };
 }
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
+});
