@@ -12586,7 +12586,7 @@ bot.on("message", async message => {
      
 });
 
-bot.on('message',args (message) => {
+bot.on('message',message => {
  if(message.content.startsWith(prefix + 'addrole')) {
    if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
