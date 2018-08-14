@@ -44,8 +44,7 @@ client.on('message', message => {
               };
               }else {
                 return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
-          });
-  }
+       }
 });
    client.on('message', message =>{
                     if(message.content.startsWith(prefix + 'هل تعلم')) {
