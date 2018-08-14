@@ -11,9 +11,9 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const bot = new Discord.Client({disableEveryone: true});
+bot.commands = new Discord.Collection();
 bot.on("ready", async () => {
 	 bot.commands.set(props.help.name, props);
-	   }
 });
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
@@ -12571,7 +12571,6 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-bot.commands = new Discord.Collection();
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
