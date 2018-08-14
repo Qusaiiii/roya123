@@ -47,8 +47,7 @@ client.on('message', message => {
                 return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
 	
     }
-    } else {
-        return;
+    } 
     }
 });
    client.on('message', message =>{
