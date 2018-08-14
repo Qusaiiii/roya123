@@ -20,24 +20,45 @@ client.on('message', message => {
     }
 });
 client.on('message', message => {
-			 if(message.content.startsWith(prefix + 'removerole')) {
-if(message.member.hasPermission("ADMINISTRATOR")) {
-  let member3 = message.mentions.members.first();
-  if(!member3) return message.reply(":x: " + "| You need to mention a user/member!");
-
-  let muteRole3 = message.mentions.roles.first();
-  if(!muteRole3) return message.reply(":x: " + `| There is no such thing as a \"${muteRole3.name}\" role!`);
-
-  member3.removeRole(muteRole3.id);
-  message.channel.send(member3 + ` you have lost the role: ` + muteRole3.name + `!`);
-
-  }else {
-    return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
-	
+			 if(message.content.startsWith(prefix + 'addrole')) {
+  const guildPerms = message.member.permission.json
+    const botPerms = message.channel.guild.members.get(global.bot.user.id).permission.json
+    const roleToAdd = message.split(' ').splice(message.mentions.filter(m => m.id !== global.bot.user.id).length).join(' ')
+    const regExp = new RegExp(roleToAdd, 'i')
+    const role = message.channel.guild.roles.find(r => r.name === roleToAdd)
+    if (!role) message.channel.guild.roles.find(r => r.name.match(regExp))
+    if (!guildPerms.manageRoles) {
+      message.channel.createMessage(`<@${message.author.id}>, You don't have Manage Roles permission here.`)
+    } else if (!botPerms.manageRoles) {
+      client.channel.createMessage('I don\'t have Manage Roles permission here, sorry!')
+    } else if (message.mentions.filter(u => u.id !== global.bot.user.id).length === 0 && !message.mentionEveryone) {
+      message.channel.createMessage(`<@${message.author.id}>, Please @mention the user(s) you want to give the role to.`)
+    } else if (!role) {
+      message.channel.createMessage(`<@${message.author.id}>, The role does not seem to exist. Check your spelling and remember that this command is case sensitive.`)
+    } else {
+      message.mentions.filter(m => m.id !== global.bot.user.id).forEach((mention) => {
+        let guildMember = message.channel.guild.members.get(mention.id)
+        guildMember.addRole(role.id, `Role added by ${message.author.username}#${message.author.discriminator}`).then(() => {
+          message.channel.createMessage({
+            embed: {
+              description: 'Role `' + role.name + '` successfully assigned to **' + guildMember.username + '**!',
+              color: role.color ? role.color : 4324655
+            }
+          })
+        }).catch(err => {
+          if (err) {
+            message.channel.createMessage({
+              embed: {
+                description: `I cannot apply role *${role.name}* to *${mention.username}* because the role is above me in the hierarchy.`,
+                color: 16711680
+              }
+            })
+          }
+        })
+      })
     }
-    } 
-   
-});
+  }
+}
    client.on('message', message =>{
                     if(message.content.startsWith(prefix + 'هل تعلم')) {
                         var kingmas =["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
