@@ -10,6 +10,7 @@ const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
+const bot = new Discord.Client({disableEveryone: true});
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
       const embed = new Discord.RichEmbed()
@@ -12566,7 +12567,8 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-client.on("message", async message => {
+bot.commands = new Discord.Collection();
+bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
 
@@ -12577,11 +12579,11 @@ client.on("message", async message => {
     if(!command.startsWith(prefix)) return;
 
     let cmd = client.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(client, message, args);
-    
+    if(cmd) cmd.run(bot, message, args);
+        bot.commands.set(props.help.name, props);
 });
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (bot, message, args) => {
 
   //!addrole <@user> <Role>
   if(args[0] == "help"){
