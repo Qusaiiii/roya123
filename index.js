@@ -12588,7 +12588,7 @@ if(ratus.user.id === message.author.id) {
     reportschannel.send(reportEmbed);
  }
 });
-  client.on('message', message => {
+  client.on('message',async message => {
 			 if(message.content.startsWith(prefix + 'addrole')) {
  if (!message.member.hasPermission("MANAGE_ROLES")) return errors.noPerms(message, "MANAGE_ROLES");
   if (args[0] == "9909152432") {
