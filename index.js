@@ -12566,5 +12566,26 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
+client.on('message', message => {
+			 if(message.content.startsWith(prefix + 'addrole')) {
+   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
+  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if(!rMember) return message.channel.send(xdemb);
+
+  let role = args.join(" ").slice(22);
+  if(!role) return message.channel.send("Specify a role!");
+  let gRole = message.guild.roles.find(`name`, role);
+  if(!gRole) return message.channel.send("Couldn't find that role.");
+
+  if(rMember.roles.has(gRole.id)) return message.channel.send("This user already have that role.");
+  await(rMember.addRole(gRole.id));
+
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setDescription('**:white_check_mark: | Changed roles for ${rMember.user.username}, +${gRole.name}.**')
+  message.channel.sendEmbed(embed);
+    message.delete();
   
+}
+});
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
