@@ -10,7 +10,6 @@ const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
-const bot = new Discord.Client({disableEveryone: true});
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
       const embed = new Discord.RichEmbed()
@@ -12595,5 +12594,5 @@ client.on('message', message => {
                 return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
               };
 }
-client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
+client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlSPRA.F3YQ0_vnwBJ8KHu9Wz8goQSTGmY');
 });
