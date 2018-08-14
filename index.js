@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 	const prefix = "-"	
 	const moment = require('moment');
         const ytdl = require("ytdl-core");
+        const ms = require("ms");
 const { Client, Util } = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
@@ -1222,7 +1223,6 @@ client.on("message", message => {
 client.on('message', async message =>{
   var prefix = "/";
 
-const ms = require("ms");
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
