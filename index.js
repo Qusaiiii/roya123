@@ -11,10 +11,6 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const bot = new Discord.Client({disableEveryone: true});
-bot.commands = new Discord.Collection();
-bot.on("ready", async () => {
-	 bot.commands.set(props.help.name, props);
-});
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
       const embed = new Discord.RichEmbed()
