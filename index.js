@@ -18,6 +18,35 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+client.on('message', message => {
+			 if(message.content.startsWith(prefix + 'addrole')) {
+  if(message.member.hasPermission("ADMINISTRATOR")) {
+            let member2 = message.mentions.members.first();
+            if(!member2) return message.reply(":x: " + "| You need to mention a user/member!");
+
+            let muteRole2 = message.mentions.roles.first();
+            if(!muteRole2) return message.reply(":x: " + `| There is no such role!`);
+            
+            let time2 = args[2];
+            if(!time2) {
+              member2.addRole(muteRole2.id);
+              message.channel.send(member2 + ` you have been given the permanent role: ` + muteRole2.name);
+            }else {
+              member2.addRole(muteRole2.id);
+              message.channel.send(member2 + ` you have been given the role: ` + muteRole2.name + ` for: ${ms(ms(time2), {long: true})}`);
+
+              setTimeout(function(){
+                member2.removeRole(muteRole2.id);
+                message.channel.send(member2 + ` you role has been taken off of you your glory lasted: ${ms(ms(time2), {long: true})}`)
+
+              }, ms(time2));
+
+              };
+              }else {
+                return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
+          });
+  }
+});
    client.on('message', message =>{
                     if(message.content.startsWith(prefix + 'هل تعلم')) {
                         var kingmas =["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
@@ -12566,33 +12595,4 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-client.on('message', message => {
-			 if(message.content.startsWith(prefix + 'addrole')) {
-  if(message.member.hasPermission("ADMINISTRATOR")) {
-            let member2 = message.mentions.members.first();
-            if(!member2) return message.reply(":x: " + "| You need to mention a user/member!");
-
-            let muteRole2 = message.mentions.roles.first();
-            if(!muteRole2) return message.reply(":x: " + `| There is no such role!`);
-            
-            let time2 = args[2];
-            if(!time2) {
-              member2.addRole(muteRole2.id);
-              message.channel.send(member2 + ` you have been given the permanent role: ` + muteRole2.name);
-            }else {
-              member2.addRole(muteRole2.id);
-              message.channel.send(member2 + ` you have been given the role: ` + muteRole2.name + ` for: ${ms(ms(time2), {long: true})}`);
-
-              setTimeout(function(){
-                member2.removeRole(muteRole2.id);
-                message.channel.send(member2 + ` you role has been taken off of you your glory lasted: ${ms(ms(time2), {long: true})}`)
-
-              }, ms(time2));
-
-              };
-              }else {
-                return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission")
-              };
-}
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlSPRA.F3YQ0_vnwBJ8KHu9Wz8goQSTGmY');
-});
