@@ -12611,5 +12611,6 @@ if(ratus.user.id === message.author.id) {
     console.log(e.stack);
     message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. We tried to DM them, but their DMs are locked.`)
   }
+				 }
 });
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
