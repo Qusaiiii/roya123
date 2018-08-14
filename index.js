@@ -12567,41 +12567,52 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-client.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;  
 
-    let messageArray = message.content.split(" ");
-    let command = messageArray[0];
-    let args = messageArray.slice(1);
+    client.on('message', message => {
+			 if(message.content.startsWith(prefix + 'report')) {
 
-    if(!command.startsWith(prefix)) return;
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#15f153")
+    .addField("• Reported User", `${rUser} with ID: ${rUser.id}`)
+    .addField("• Reported By", `${message.author} with ID: ${message.author.id}`)
+    .addField("• Channel", message.channel)
+    .addField("• Time", message.createdAt)
+    .addField("• Reason", rreason);
 
-    if(client) client.run(client, message, args);
-     
-});
+    let reportschannel = message.guild.channels.find(`name`, "reports");
+    if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
 
-client.on('message', message => {
- if(message.content.startsWith(prefix + 'addrole')) {
-   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
-  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!rMember) return message.channel.send(xdemb);
 
-  let role = args.join(" ").slice(22);
-  if(!role) return message.channel.send("Specify a role!");
-  let gRole = message.guild.roles.find(`name`, role);
-  if(!gRole) return message.channel.send("Couldn't find that role.");
-
-  if(rMember.roles.has(gRole.id)) return message.channel.send("This user already have that role.");
-  await(rMember.addRole(gRole.id));
-
-      const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription('**:white_check_mark: | Changed roles for ${rMember.user.username}, +${gRole.name}.**')
-  message.channel.sendEmbed(embed);
-    message.delete();
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
  }
 });
+  client.on('message', message => {
+			 if(message.content.startsWith(prefix + 'addrole')) {
+ if (!message.member.hasPermission("MANAGE_ROLES")) return errors.noPerms(message, "MANAGE_ROLES");
+  if (args[0] == "9909152432") {
+    message.reply("90912959021");
+    return;
+  }
+  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if (!rMember) return errors.cantfindUser(message.channel);
+  let role = args.join(" ").slice(22);
+  if (!role) return message.reply("Specify a role!");
+  let gRole = message.guild.roles.find('name', role);
+  if (!gRole) return message.reply("Couldn't find that role.");
 
+  if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
+  await (rMember.addRole(gRole.id));
 
+  try {
+    await rMember.send(`Congrats, you have been given the role ${gRole.name}`)
+  } catch (e) {
+    console.log(e.stack);
+    message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. We tried to DM them, but their DMs are locked.`)
+  }
+    } catch(err) {
+     
+    }
+};
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
