@@ -12581,7 +12581,7 @@ client.on("message", async message => {
     
 });
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
   //!addrole <@user> <Role>
   if(args[0] == "help"){
