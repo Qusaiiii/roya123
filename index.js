@@ -40,8 +40,7 @@ client.on('message', message => {
                             msg.channel.send('Successfully added role `' + role.name + '` to ' + m.user.username + '.');
                         } else {
                             msg.channel.send('Failed to add role `' + role.name + '` to ' + m.user.username + '.');
-                   });
-  }
+			}
 });
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
