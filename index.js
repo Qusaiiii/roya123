@@ -12586,25 +12586,8 @@ bot.on("message", async message => {
      
 });
 
-module.exports.run = async (bot, message, args) => {
-
-  //!addrole <@user> <Role>
-  if(args[0] == "help"){
-    let helpembxd = new Discord.RichEmbed()
-    .setColor("#00ff00")
-    .addField("Addrole Command", "Usage: -addrole <@user> <role>")
-
-    message.channel.send(helpembxd);
-    return;
-  } 
-
-  let xdemb = new Discord.RichEmbed()
-  .setColor("#00ff00")
-  .setTitle(`Addrole command`)
-  .addField("Description:", "Add role to member", true)
-  .addField("Usage", "-addrole [user] [role]", true)
-  .addField("Example", "-addrole @ImRoyal_Raddar Member")
-
+bot.on('message',args message => {
+ if(message.content.startsWith(prefix + 'addrole')) {
    if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!rMember) return message.channel.send(xdemb);
@@ -12622,11 +12605,8 @@ module.exports.run = async (bot, message, args) => {
   .setDescription('**:white_check_mark: | Changed roles for ${rMember.user.username}, +${gRole.name}.**')
   message.channel.sendEmbed(embed);
     message.delete();
-}
+ }
+});
 
-module.exports.help = {
-  name: "addrole",
-  description: 'Add role to someone',
-  usage: 'addrole <@user> <Role>'
-}
+
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
