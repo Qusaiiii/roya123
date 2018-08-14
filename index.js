@@ -12566,8 +12566,40 @@ if(ratus.user.id === message.author.id) {
 } else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
  }
 });
-client.on('message',args (message) => {
-			 if(message.content.startsWith(prefix + 'addrole')) {
+client.on("message", async message => {
+    if(message.author.bot) return;
+    if(message.channel.type === "dm") return;  
+
+    let messageArray = message.content.split(" ");
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
+
+    if(!command.startsWith(prefix)) return;
+
+    let cmd = bot.commands.get(command.slice(prefix.length));
+    if(cmd) cmd.run(bot, message, args);
+    
+});
+
+module.exports.run = async (bot, message, args) => {
+
+  //!addrole <@user> <Role>
+  if(args[0] == "help"){
+    let helpembxd = new Discord.RichEmbed()
+    .setColor("#00ff00")
+    .addField("Addrole Command", "Usage: -addrole <@user> <role>")
+
+    message.channel.send(helpembxd);
+    return;
+  } 
+
+  let xdemb = new Discord.RichEmbed()
+  .setColor("#00ff00")
+  .setTitle(`Addrole command`)
+  .addField("Description:", "Add role to member", true)
+  .addField("Usage", "-addrole [user] [role]", true)
+  .addField("Example", "-addrole @ImRoyal_Raddar Member")
+
    if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("You don't have premmsions to do that!");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!rMember) return message.channel.send(xdemb);
@@ -12585,7 +12617,11 @@ client.on('message',args (message) => {
   .setDescription('**:white_check_mark: | Changed roles for ${rMember.user.username}, +${gRole.name}.**')
   message.channel.sendEmbed(embed);
     message.delete();
-  
 }
-});
+
+module.exports.help = {
+  name: "addrole",
+  description: 'Add role to someone',
+  usage: 'addrole <@user> <Role>'
+}
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
