@@ -40,13 +40,21 @@ client.on('message', message => {
                             msg.channel.send('Successfully added role `' + role.name + '` to ' + m.user.username + '.');
                         } else {
                             msg.channel.send('Failed to add role `' + role.name + '` to ' + m.user.username + '.');
-	  )
-      }
-    } catch (e) {
+	
+}
+		client.on('message', message => {
+			 if(message.content.startsWith(prefix + 'تقيم')) {
+		let ratus = message.mentions.members.first();
+if(!ratus) return message.channel.send("Tag someone to rate them!");
 
-      return null
-    }
-  }
+let rates = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+let result = Math.floor((Math.random() * rates.length));
+
+if(ratus.user.id === message.author.id) {
+  return message.channel.send(`**${message.author.username}**, I'd give you ${result}/10<:thonk:427846193503272960>`);
+} else return message.channel.send(`I'd give **__${ratus.user.username}__** ${result}/10 <:thonk:427846193503272960>`);
+
 }
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
