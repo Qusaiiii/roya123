@@ -40,7 +40,8 @@ client.on('message', message => {
                             msg.channel.send('Successfully added role `' + role.name + '` to ' + m.user.username + '.');
                         } else {
                             msg.channel.send('Failed to add role `' + role.name + '` to ' + m.user.username + '.');
-	   }
+	}
+}
 });
 client.on('message', message => {
      if (message.content === "سلام عليكم") {
@@ -12585,4 +12586,3 @@ message.member.addRole(message.guild.roles.find("name", "100"));
 });
   
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlHdTQ.xTq4JpW_JXcz2Ps3jycTAYN3nHY');
-});
