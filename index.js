@@ -19,6 +19,14 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+client.on('message', message => {
+     if (message.content === "السلام عليكم") {
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setDescription(' **وعليكم السلام** ')
+  message.channel.sendEmbed(embed);
+    }
+});
 
    client.on('message', message =>{
                     if(message.content.startsWith(prefix + 'هل تعلم')) {
@@ -548,8 +556,6 @@ Role : __${ar[message.guild.id].role}__`)
 client.on('message', message => {
 if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
     let pages = [`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-:earth_africa: The Public Commands :earth_africa: 
 1༺༻  #color  | Select Color༺༻
 2༺༻  -stats | Shows Bot Info༺༻
 3༺༻  -new | Create New Ticket༺༻
@@ -568,11 +574,13 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 14༺༻ -مريم | Mariam Game༺༻
 15༺༻ -ماين كرافت | MineCraft Game༺༻
 16༺༻ -هل تعلم | Did You Know? Game༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
+17༺༻ -اسئلني | Questions game!? Game༺༻
+18༺༻ -فكك | Fkk Game༺༻
+19༺༻ -تقيم @user | Rate!? Game༺༻
+20༺༻ -sug | Suggestion༺༻
 Click On ▶ To Go Administor Side
    `
 ,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 :closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
 1༺    -clear | Clear The Chat༺༻
 2༺༻  -mute | Msg Everyone In The Server༺༻
@@ -582,12 +590,9 @@ Click On ▶ To Go Administor Side
 6༺༻  -cc Number | Create colors with number like #cc 100 this will create for you 100 color༺༻
 7༺༻  -ban | BroadCast༺༻
 8༺༻  -say | Make the bot talkt༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 Click On ▶ To Go To Bot Info
    `,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
 1༺༻  Bot By:ImRoyal_Raddar༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
    `]
     let page = 1;
 
@@ -629,6 +634,43 @@ Click On ▶ To Go To Bot Info
     })
     }
 }); 
+client.on('message', async message => {//By Codes , - ST I EdiTeD , .#4968
+  if(message.content.startsWith(prefix + "apply")) {//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+    await message.channel.send("**:writing_hand: | ارسل سبب التقديم**").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';//By Codes , - ST I EdiTeD , .#4968
+    let br = '';//By Codes , - ST I EdiTeD , .#4968
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.edit(`**:ارسل هل لديك خبرة سابقة في هذه الرتبة**`)
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {//By Codes , - ST I EdiTeD , .#4968
+  md = co.first().content
+        co.first().delete()//By Codes , - ST I EdiTeD , .#4968
+        e.edit(`**ارسل كيف ستفيد السيرفر لو اخذت الرتبة**`)
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+.then(col => {
+  br = col.first().content
+        col.first().delete()
+e.edit("**جاري التقديم علي طلبك...**").then(b => {//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+        setTimeout(() => {
+  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
+        },2000);
+var gg = message.guild.channels.find('name', '👥ꞈ⟪◸ℰ․apply․ℰ◿⟫')
+if(!gg) return;//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+if(gg) {
+gg.send({embed : new Discord.RichEmbed()//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+.setDescription(`**سبب التقديم : \n ${lan}\n الخبرة :\n ${md} \nبماذا سينفع السيرفر  :\n ${br}  **`)  
+          .setFooter(`Codes.`)//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+.setTimestamp()//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+   })
+        })
+    })
+    }
+}); 
 const minecraft = [  'ما معنى تطويرة؛ silk touch ؟',  'من هوة اللذي قد انهى سلسلة سيرفر مايت كرافت؟',  'ماهو الوحش اللذي يرسبن في معبد البحر؟',  'من افضل يوتيوبر ينزل شروحات)ردستونية؛عامة',  'ماذا يفعل لك الهيروبراين؟',  'ماهو الشئ اللذي يمكن مكاثرة الفلجر فيه؟',  'من هو اندر ثاني شئ في ماين كرافت',  'ماهو الامر اللذي يعطينا كوماند بلوك؟',  'كم من الوقت يستغرق اليوم العادي في ماين كرافت؟',  'هل لليردستون اهمية كبيرة في ماين كرافت؟',  'اندر اور',  'مطور ماين كرافت السابق',  'اصغر موب في ماين كرافت',  'كيف تصنع البوق',  'في اي ارتفاع تلقى الدايموند',  'موب مستحيل تضربة بالبو (السهم)',  'كم نحتاج من Glowstone Dust لكي نصنع بلكة كاملة منه',  'كم نحتاج حبة ايرون لصنع سكة الحديد (Track)',  'كم عدد قلوب البقرة',  'ن ماذا يخاف الكريبر',  'يشتهر الاندرمان ب…..?',  'كم عدد قلوب الايرون قولم',  'كم ضربة تضرب الدجاجة و تموت',  'كم بلوكة تحتاج بوابة النذر',  'كم بلوكة تحتاج بوابة الاند',  'كم تحتاج الفرن ايروون عشان تصنعها',  'كيف تصنع كرافتنق تيبل',  'كم ياخذ وقت النبات عشان يكبر',  'كم قلوب ستيفي',  'كم قلوب الاندر مان',  'هل الاندر مان يضرب',  'هل الزومبي غبي ؟ و في اي تحديث ؟',  'ماهو الافضل للتسخين الافا او فحم ؟',  'ماهو شئ الذي اقوى من الاوبسيدين ؟',]
 client.on('message', message => {
 
@@ -637,7 +679,7 @@ if (message.content.startsWith(prefix + 'ماين كرافت')) {
 
   if(!message.channel.guild) return message.reply('** This command only for servers **');
 var client= new Discord.RichEmbed()
-.setTitle("Hano v0.1 | لعبة ماين كرافت ..")
+.setTitle("Hano. v0.1 | لعبة ماين كرافت ..")
 .setColor('RANDOM')
 .setDescription(`${minecraft[Math.floor(Math.random() * minecraft.length)]}`)
 .setImage("https://i.imgur.com/RyOXHmZ.png")
@@ -923,7 +965,33 @@ client.on('message',async message => {
        
     }
 })
-  
+  client.on('message', message => {
+    if (message.content == "-اسئلني") {
+         message.react('🤔','👌')
+        var x = ['اين يلعب مصطفي فتحي؟', 'ما هو اسم ملعب بارشالونة', 'ما هو يوم الحج الأكبر؟', 'ما هو أطول أنهار أوربا ؟', 'ما هو اسم بيت الدجاج', 'ما هو أول بنك قام بالنشاط المصرفي في السعودية عام 1926م' , 'ما هو أول جامع أقيم في مصر','ما هو أطول نهر في آسيا','ما هو أقرب كوكب إلى الشمس','ما هو الحيوان الذي يُسمى البهنس','ما هو اول مسجد أسس بالمدينة','متى وقع صلح الحديبية عام 6هـ او 3هـ او 2هـ؟','متى قامت أمريكا بأول رحلة فضائية','متى كانت غزوة خيبر؟','ما هي السورة التي تبدأ بقوله تعالى " يا أيها النبي اتق الله ولا تطع الكافرين والمنافقين إن الله كان عليما حكيما ".اجب؟','ما هي السورة التي يطلق عليها عروس القرآن','ماذا يسمى من لايقرأ ولايكتب','ماهي أول دولة استخدمت طابع البريد','ماهو شعار الولايات المتحدة الامريكية','ماهو اذكي الحيوانات','من هو مكتشف أمريكا','مامعنى "فرعون" اجب؟','ماهو اقرب كوكب إلى الارض','ما هي نسبه المياه من الكره الارضيه?','كم عدد السجدات في القرآن الكريم؟','من هو بطل كاس العالم في عام 1966','أين أفتتح اول متحف في العالم?','ماأسم أنثى الحمار?','كم تبلغ درجه حراره الشمس؟','من هي مدينة الضباب','أين توجد أطول سكة حديد في العالم?'
+        ];
+        var x2 = ['التعاون', 'كامب نو', 'يوم النحر', 'الدانوب', 'قن', 'البنك الهولندي', 'جامع عمرو بن العاص','اليانجستي','عطارد','الاسد','مسجد قباء','6','سنة 1962','عام 7هـ','الاحزاب','سورة الرحمن','امي','بريطانيا','النسر الاصلع','الدلفين','كولمبس','البيت الكبير','الزهره','71%','15 سجدة','انكلترا ','القاهرة','الاتان','15 مليون درجه مئوية','لندن','كندا'
+        ];
+		var x3 = Math.floor(Math.random()*x.length)
+        message.channel.send(`📢 امامك دقيقة لحل الاسئلة , السؤال يقول :  __**${x[x3]}**__ `).then(msg1=> {
+            var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
+               thing: true,
+               maxMatches : 1,
+                time : 60000,
+                 maxUses: 1,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return message.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح `)
+        })
+
+        r.then((collected)=> {
+            message.channel.send(`${collected.first().author} لقد قمت بكتابة الجواب الصحيح  `);
+            message.react('✅')
+        })
+        })
+    }
+})
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
 	
@@ -1204,12 +1272,12 @@ var args = message.content.split(" ").slice(1);
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**يجب عليك المنشن اولاّ**:x: ") .then(m => m.delete(5000));
 if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**للأسف لا أمتلك صلاحية** `MANAGE_MASSAGEES`');
-    let muterole = message.guild.roles.find(`name`, "muted");
+    let muterole = message.guild.roles.find(`name`, "Muted");
     
     if(!muterole){
       try{
         muterole = await message.guild.createRole({
-          name: "muted",
+          name: "Muted",
           color: "&000000",
           permissions:[]
         })
@@ -1244,7 +1312,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
 
-  let role = message.guild.roles.find (r => r.name === "muted");
+  let role = message.guild.roles.find (r => r.name === "Muted");
   
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**لم يتم اعطاء هذه شخص ميوت من الأساس**:x:")
 
@@ -1261,7 +1329,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== '292357771943477252') return;
+  if (message.author.id !== '474172469566111745') return;
 
 if (message.content.startsWith(prefix + 'setplaying')) {
   client.user.setGame(argresult);
@@ -1359,6 +1427,36 @@ let heroo = new Discord.RichEmbed()
 .setFooter("Hano. | v0.1")
   message.channel.send({embed:v1}).then(m => m.edit({embed:heroo})),ms; 
     }
+});
+ client.on('message', message => { 
+if(message.content.startsWith(prefix + 'sug')) {
+      if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات :x:`);
+   let args = message.content.split(" ").slice(1);
+   var ID = message.author.id 
+   var emben = new Discord.RichEmbed()
+   .setTimestamp()
+   .setTitle(`:x: Error`)
+   .setDescription(`الرجاء كتابت إقتراحك بعد الأمر `)
+   if(!args.join(" ")) return message.channel.send(emben).then(message => {message.delete(50000)});
+   var embet = new Discord.RichEmbed()
+   .setTitle(`:white_check_mark: | Success!`)
+   .setTimestamp()
+   .setDescription(`شكراً على اقتراحك !`)
+.addField(`إقتراحك : `,args.join(" "))
+   var embed = new Discord.RichEmbed()
+   .setTimestamp()
+   .setColor('RANDOM')
+   .setThumbnail(message.author.avatarURL)
+   .setFooter(`${message.author.username}#${message.author.discriminator}`)
+   .setTitle(`${client.user.username}`)
+   .setURL(`${client.user.avatarURL}`)
+   .setDescription(`**
+__المقترح__ :\n <@${ID}>\n
+__الإقتراح__ :  \`\`\`${args.join(" ")}\`\`\`**`)
+           client.channels.get("479967862287499264").send(embed)
+  message.channel.sendEmbed(embet).then(message => {message.delete(50000)})
+            message.react("📩")
+}
 });
 var x1 = "#color 1"
 var x2 = "#color 2"
