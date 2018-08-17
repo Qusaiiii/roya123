@@ -161,7 +161,6 @@ client.on('message', message => {
                 return;
             })
             message.channel.send("Added " + memberMention.toString() + " the role '" + role.name + "'.")
-          });
     }
     } else {
         return;
