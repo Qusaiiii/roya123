@@ -161,9 +161,13 @@ client.on('message', message => {
                 return;
             })
             message.channel.send("Added " + memberMention.toString() + " the role '" + role.name + "'.")
-});
+   return;
+        }
+    } else {
+        message.channel.send(v.usermissperm())
+        return;
+    }
 }
-});
   client.on('message', message => {
   if (message.author.codes) return;
   if (!message.content.startsWith(prefix)) return;
