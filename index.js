@@ -1417,7 +1417,7 @@ if(message.content.startsWith(prefix + 'sug')) {
    .setDescription(`**
 __المقترح__ :\n <@${ID}>\n
 __الإقتراح__ :  \`\`\`${args.join(" ")}\`\`\`**`)
-           client.channels.get("479967862287499264").send(embed)
+           client.channels.get("480001296674324481").send(embed)
   message.channel.sendEmbed(embet).then(message => {message.delete(50000)})
             message.react("📩")
 }
