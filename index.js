@@ -161,10 +161,13 @@ client.on('message', message => {
                 return;
             })
             message.channel.send("Added " + memberMention.toString() + " the role '" + role.name + "'.")
-    }
+      return;
+        }
     } else {
+ 
         return;
     }
+}
 
   client.on('message', message => {
   if (message.author.codes) return;
@@ -12666,5 +12669,4 @@ if(ratus.user.id === message.author.id) {
  }
 });
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlSPRA.F3YQ0_vnwBJ8KHu9Wz8goQSTGmY');
-});
 
