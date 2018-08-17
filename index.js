@@ -12669,3 +12669,5 @@ if(ratus.user.id === message.author.id) {
 });
 client.login('NDc3ODE1NjI5Njg0OTMyNjI5.DlSPRA.F3YQ0_vnwBJ8KHu9Wz8goQSTGmY');
 
+
+	 });
