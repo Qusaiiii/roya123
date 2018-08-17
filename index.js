@@ -165,7 +165,6 @@ client.on('message', message => {
     } else {
         return;
     }
-});
 
   client.on('message', message => {
   if (message.author.codes) return;
