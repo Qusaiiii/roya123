@@ -129,7 +129,7 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
- client.on('message', message => {
+ client.on('message',async message => {
 	   if (message.content.startsWith("-addrole")) {
     if (message.member.permissions.has("MANAGE_ROLES", "ADMINISTRATOR")) {
         if (message.mentions.users.size === 0) {
