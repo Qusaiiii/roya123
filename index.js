@@ -164,7 +164,7 @@ client.on('message', message => {
         }
     } 
     }
-}
+});
   client.on('message', message => {
   if (message.author.codes) return;
   if (!message.content.startsWith(prefix)) return;
