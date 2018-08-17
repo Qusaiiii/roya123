@@ -130,7 +130,7 @@ client.on('message', message => {
     }
 });
   var args = cont.slice(1);
- client.on('message',args message => {
+ client.on('message',message => {
 	   if (message.content.startsWith("-addrole")) {
     if (message.member.permissions.has("MANAGE_ROLES", "ADMINISTRATOR")) {
         if (message.mentions.users.size === 0) {
