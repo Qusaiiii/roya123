@@ -129,6 +129,44 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
+ client.on('message', message => {
+	   if (message.content.startsWith("-addrole")) {
+    if (message.member.permissions.has("MANAGE_ROLES", "ADMINISTRATOR")) {
+        if (message.mentions.users.size === 0) {
+            let role = message.guild.roles.find("name", args.slice(0).join(" "))
+            if (args[0] === undefined) { message.channel.send("Please provide a valid role name!"); return; }
+            if (!role) { message.channel.send("That role does not seem valid."); return; }
+            if (message.guild.owner.id !== message.author.id) {
+                if (role.position >= message.member.highestRole.position) { message.channel.send("You cannot give you a role that is higher than your current highest role."); return; }}
+            if (message.member.roles.has(role.id)) { message.channel.send("You already have that role!"); return; }
+
+            message.member.addRole(role).catch(err => {
+                message.channel.send("Error: " + err)
+                return;
+            })
+            message.channel.send("Added role '" + role.name + "'.")
+            return;
+
+        } else {
+            let memberMention = message.mentions.members.first()
+            let role = message.guild.roles.find("name", args.slice(1).join(" "))
+            if (args[1] === undefined) { message.channel.send("Please provide a valid role name!"); return; }
+            if (!role) { message.channel.send("That role does not seem valid."); return; }
+            if (message.guild.owner.id !== message.author.id) {
+                if (role.position >= message.member.highestRole.position) { message.channel.send("You cannot give someone a role that is higher than your current highest role."); return; }}
+            if (memberMention.roles.has(role.id)) { message.channel.send("The user already has that role!"); return; }
+
+            memberMention.addRole(role).catch(err => {
+                message.channel.send("Error: " + err)
+                return;
+            })
+            message.channel.send("Added " + memberMention.toString() + " the role '" + role.name + "'.")
+            return;
+        }
+    } else {
+        return;
+    }
+}
 
   client.on('message', message => {
   if (message.author.codes) return;
