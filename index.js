@@ -161,13 +161,8 @@ client.on('message', message => {
                 return;
             })
             message.channel.send("Added " + memberMention.toString() + " the role '" + role.name + "'.")
-      return;
-        }
-    } else {
- 
-        return;
-    }
-}
+  }
+});
 
   client.on('message', message => {
   if (message.author.codes) return;
