@@ -167,7 +167,7 @@ var cont = message.content.slice(prefix.length).split(" ");
             })
 		     const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-  .setDescription('**:white_check_mark: Changed roles for + memberMention.toString() + role.name + .**')
+  .setDescription('**:white_check_mark: Changed roles for**" + memberMention.toString() + "**,-**" + role.name + ".**')
     .setFooter(`Requested By: ${message.author.tag}`);		     
   message.channel.sendEmbed(embed);
     
