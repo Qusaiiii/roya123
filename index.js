@@ -165,11 +165,7 @@ var cont = message.content.slice(prefix.length).split(" ");
                 message.channel.send("Error: " + err)
                 return;
             })
-		     const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription("Added " + memberMention.toString() + " the role '" + role.name + "'.)
-    .setFooter(`Requested By: ${message.author.tag}`);		     
-  message.channel.sendEmbed(embed);
+	   message.channel.send(":white_check_mark: **Changed roles for** " + memberMention.toString() + "** ,+**'" + role.name + "'**.**")
     
         }
     } 
