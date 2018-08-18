@@ -23,6 +23,7 @@
     "request": "^2.81.0",
     "simple-short": "^1.0.7",
     "enmap": "^0.4.6",
+    "canvas": "^1.6.7",
     "enmap-level": "^1.0.1",
     "enmap-rethink": "^2.0.2",
     "get-youtube-id": "^1.0.0",
