@@ -21,6 +21,31 @@ client.on('message', message => {
     }
 });
 client.on('message', message => {
+	  if(message.content.startsWith(prefix + 'death')) {
+  let user;
+  if (message.mentions.users.first()) {
+    user = message.mentions.users.first().username;
+  } else {
+    return message.channel.send("**منشن شخص**");
+  }
+  let Image = Canvas.Image,
+    canvas = new Canvas(520, 283),
+    ctx = canvas.getContext('2d');
+  fs.readFile('./death.png', (err, image) => {
+    if (err) return console.log(err);
+      let img = new Image
+      img.src = image;
+      ctx.drawImage(img, 0, 0, 520, 283);
+      ctx.font = "18px Papyrus";
+      ctx.fillText(user, 275, 80)
+      canvas.toBuffer((err, buff) => {
+        if (err) return console.log(err);
+        message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
+        message.channel.sendFile(buff)
+      })
+  })
+}
+client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
