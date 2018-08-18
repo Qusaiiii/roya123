@@ -208,7 +208,7 @@ var cont = message.content.slice(prefix.length).split(" ");
             return;
         });
         message.channel.send("Nick of " + nickmention + " (" + nickmention.username + "#" + nickmention.discriminator + ") changed to: `" + nickchange + "`")
-        return;
+  
      }
     } 
     }
