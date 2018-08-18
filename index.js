@@ -129,11 +129,12 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });
-    if (!message.content.startsWith(prefix)) return;
+
+ client.on('message',message => {
+	     if (!message.content.startsWith(prefix)) return;
 var cont = message.content.slice(prefix.length).split(" ");
 
   var args = cont.slice(1);
- client.on('message',message => {
 	   if (message.content.startsWith("-addrole")) {
     if (message.member.permissions.has("MANAGE_ROLES", "ADMINISTRATOR")) {
         if (message.mentions.users.size === 0) {
