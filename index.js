@@ -165,7 +165,7 @@ var cont = message.content.slice(prefix.length).split(" ");
                 message.channel.send("Error: " + err)
                 return;
             })
-	   message.channel.send(":white_check_mark: **Changed roles for** " + memberMention.toString() + "** ,+**'" + role.name + "'**.**")
+	   message.channel.send(":white_check_mark: **Changed roles for** " + memberMention.toString() + "** ,+**" + role.name + "**.**")
     
         }
     } 
