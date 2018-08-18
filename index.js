@@ -42,9 +42,8 @@ client.on('message', message => {
         if (err) return console.log(err);
         message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
         message.channel.sendFile(buff)
-      })
-  })
-}
+     }
+});
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
