@@ -748,6 +748,7 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 18༺༻ -فكك | Fkk Game༺༻
 19༺༻ -تقيم @user | Rate!? Game༺༻
 20༺༻ -sug | Suggestion༺༻
+21༺༻ -nick | Change your nickname༺༻
 Click On ▶ To Go Administor Side
    `
 ,`
@@ -760,6 +761,7 @@ Click On ▶ To Go Administor Side
 6༺༻  -cc Number | Create colors with number like #cc 100 this will create for you 100 color༺༻
 7༺༻  -ban | BroadCast༺༻
 8༺༻  -say | Make the bot talkt༺༻
+9༺༻  -addrole | AddRole༺༻
 Click On ▶ To Go To Bot Info
    `,`
 1༺༻  Bot By:ImRoyal_Raddar༺༻
