@@ -136,30 +136,30 @@ var cont = message.content.slice(prefix.length).split(" ");
 
   var args = cont.slice(1);
 	   if (message.content.startsWith("-addrole")) {
-    if (message.member.permissions.has("MANAGE_ROLES", "ADMINISTRATOR")) {
+    if (message.member.permissions.has("MANAGE_ROLES")) {
         if (message.mentions.users.size === 0) {
             let role = message.guild.roles.find("name", args.slice(0).join(" "))
-            if (args[0] === undefined) { message.channel.send("Please provide a valid role name!"); return; }
-            if (!role) { message.channel.send("That role does not seem valid."); return; }
+            if (args[0] === undefined) { message.channel.send("**ضع اسم الرتبة**"); return; }
+            if (!role) { message.channel.send("**لاتوجد هذه الرتبة**"); return; }
             if (message.guild.owner.id !== message.author.id) {
-                if (role.position >= message.member.highestRole.position) { message.channel.send("You cannot give you a role that is higher than your current highest role."); return; }}
+                if (role.position >= message.member.highestRole.position) { message.channel.send("**لاتستطيع اعطاء نفسك رتبة اعلى من رتبتك الحالية**"); return; }}
             if (message.member.roles.has(role.id)) { message.channel.send("You already have that role!"); return; }
 
             message.member.addRole(role).catch(err => {
                 message.channel.send("Error: " + err)
                 return;
             })
-            message.channel.send("Added role '" + role.name + "'.")
+            message.channel.send(":white_check_mark: **Added role** " + role.name + "**.**")
             return;
 
         } else {
             let memberMention = message.mentions.members.first()
             let role = message.guild.roles.find("name", args.slice(1).join(" "))
-            if (args[1] === undefined) { message.channel.send("Please provide a valid role name!"); return; }
-            if (!role) { message.channel.send("That role does not seem valid."); return; }
+            if (args[1] === undefined) { message.channel.send("**ضع اسم الرتبة**"); return; }
+            if (!role) { message.channel.send("**لاتوجد هذه الرتبة**"); return; }
             if (message.guild.owner.id !== message.author.id) {
-                if (role.position >= message.member.highestRole.position) { message.channel.send("You cannot give someone a role that is higher than your current highest role."); return; }}
-            if (memberMention.roles.has(role.id)) { message.channel.send("The user already has that role!"); return; }
+                if (role.position >= message.member.highestRole.position) { message.channel.send("**:x: لاتستطيع اعطاء رتبة اعلى من رتبتك لشخص اخر**"); return; }}
+            if (memberMention.roles.has(role.id)) { message.channel.send("**:x: هذا الشخص بالفعل لديه الرتبة**"); return; }
 
             memberMention.addRole(role).catch(err => {
                 message.channel.send("Error: " + err)
@@ -168,6 +168,48 @@ var cont = message.content.slice(prefix.length).split(" ");
 	   message.channel.send(":white_check_mark: **Changed roles for** " + memberMention.toString() + "** ,+**" + role.name + "**.**")
     
         }
+    } 
+    }
+});
+ client.on('message',message => {
+	     if (!message.content.startsWith(prefix)) return;
+var cont = message.content.slice(prefix.length).split(" ");
+
+  var args = cont.slice(1);
+	   if (message.content.startsWith("-nick")) {
+   let nickmention = message.mentions.users.first()
+    if (message.mentions.users.size === 0) {
+        if (message.member.permissions.has("CHANGE_NICKNAME")) {
+            let nickchange = args.slice(0).join(" ");
+            if (args[0] === undefined) {
+                message.channel.send("**ضع الاسم الذي تريده**")
+                return;
+            }
+            message.guild.members.get(message.author.id).setNickname(nickchange).catch(err => {
+                message.channel.send("Error: " + err)
+                return;
+            });
+            message.channel.send(":white_check_mark: **Changed your nickname to:** `" + nickchange + "`")
+            return;
+        } else {
+            message.channel.send("You don't have permission to change your username. :confused:")
+            return;
+        }
+        return; 
+    }
+    if (message.member.permissions.has("MANAGE_NICKNAMES", "ADMINISTRATOR")) {
+        let nickchange = args.slice(1).join(" ");
+        if (args[0] === undefined) {
+            message.channel.send("**ضع اسم**")
+            return;
+        }
+        message.guild.members.get(nickmention.id).setNickname(nickchange).catch(err => {
+            message.channel.send("Error: " + err);
+            return;
+        });
+        message.channel.send("Nick of " + nickmention + " (" + nickmention.username + "#" + nickmention.discriminator + ") changed to: `" + nickchange + "`")
+        return;
+     }
     } 
     }
 });
