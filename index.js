@@ -43,6 +43,8 @@ client.on('message', message => {
         message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
         message.channel.sendFile(buff)
      }
+    } 
+    }
 });
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
