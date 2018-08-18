@@ -211,7 +211,6 @@ var cont = message.content.slice(prefix.length).split(" ");
   
      }
     } 
-    }
 });
   client.on('message', message => {
   if (message.author.codes) return;
