@@ -40,7 +40,8 @@ let mcIP = args[0];
   message.channel.send(embed);
 
   return
-};
+  }
+});
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
