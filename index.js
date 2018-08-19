@@ -21,7 +21,7 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-client.on('message', message => {
+client.on('message',async message => {
     if (message.content.startsWith("-mcstats")) {
 let mcIP = args[0];
 
