@@ -20,28 +20,7 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-client.on('message', message => {
-	  if(message.content.startsWith(prefix + 'death')) {
-  let user;
-  if (message.mentions.users.first()) {
-    user = message.mentions.users.first().username;
-  } else {
-    return message.channel.send("**منشن شخص**");
-  }
-  let Image = Canvas.Image,
-    canvas = new Canvas(520, 283),
-    ctx = canvas.getContext('2d');
-  fs.readFile('./death.png', (err, image) => {
-      let img = new Image
-      img.src = image;
-      ctx.drawImage(img, 0, 0, 520, 283);
-      ctx.font = "18px Papyrus";
-      ctx.fillText(user, 275, 80)
-      canvas.toBuffer((err, buff) => {
-        message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
-        message.channel.sendFile(buff)
-	      })
-})
+
 
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
@@ -51,7 +30,29 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+  client.on('message', message =>{
+                    if(message.content.startsWith(prefix + 'xp')) {
+  let target = message.mentions.users.first() || message.guild.members.get(args[1]) || message.author;
 
+  con.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
+    if(err) throw err;
+
+    if(!rows[0]) return message.channel.send("This user has no XP on record!");
+
+    let xp = rows[0].xp
+
+    var XPEE = new Discord.RichEmbed()
+    .setTitle("__***Total XP***__")
+
+    .addField("------------------------------------------",
+              "Total Ammount of XP: " + "__**" + xp + "**__" + "\n" +
+              "-----------------------------------------", true)
+
+    .setColor("0x#FF0000")
+
+    message.channel.send(XPEE);
+  });
+}
    client.on('message', message =>{
                     if(message.content.startsWith(prefix + 'هل تعلم')) {
                         var kingmas =["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
