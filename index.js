@@ -74,9 +74,7 @@ client.on('message', message => {
 
     message.channel.send(XPEE);
 
-})
-});
-
+  };
 exports.fire = (text, guild) => {
     if (!guild.channels) return
     let channel = guild.channels.find(c => c.topic && c.topic.includes("hano-modlog"));
