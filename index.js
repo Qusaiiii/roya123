@@ -6,6 +6,7 @@ const Discord = require('discord.js');
         const ytdl = require("ytdl-core");
         const ms = require("ms");
         const Canvas = require('canvas');
+        const superagent = require('superagent');
 const { Client, Util } = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
@@ -20,8 +21,26 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+client.on('message', message => {
+    if (message.content.startsWith("-mcstats")) {
+let mcIP = args[0];
 
 
+  let {body} = await superagent
+  .get('http://mcapi.us/server/status?ip=' + mcIP);
+  let status = body.online ? "✅" : "❎";
+
+  let embed = new Discord.RichEmbed()
+  .setTitle(`Information about ${mcIP}`)
+  .setThumbnail('https://vignette.wikia.nocookie.net/minecraftpocketedition/images/f/f1/Minecraft_1.2_Logo.png/revision/latest?cb=20171204231225')
+  .setColor(body.online ? config.green : config.red)
+  .addField('• Server Online', status)
+  .addField('• Players On', body.players.now, true)
+  .addField('• Max Players', body.players.max, true);
+  message.channel.send(embed);
+
+  return
+};
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
