@@ -32,7 +32,6 @@ client.on('message', message => {
     canvas = new Canvas(520, 283),
     ctx = canvas.getContext('2d');
   fs.readFile('./death.png', (err, image) => {
-    if (err) return console.log(err);
       let img = new Image
       img.src = image;
       ctx.drawImage(img, 0, 0, 520, 283);
@@ -42,10 +41,8 @@ client.on('message', message => {
         if (err) return console.log(err);
         message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
         message.channel.sendFile(buff)
-
-})
-	  })
-	   });
+   }
+});
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
