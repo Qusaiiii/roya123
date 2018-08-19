@@ -6,6 +6,7 @@ const Discord = require('discord.js');
         const ytdl = require("ytdl-core");
         const ms = require("ms");
         const Canvas = require('canvas');
+        const config = require('./config.json');
         const superagent = require('superagent');
 const { Client, Util } = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
