@@ -9,6 +9,7 @@ const Discord = require('discord.js');
         const config = require('./config.json');
         const superagent = require('superagent');
 const { Client, Util } = require('discord.js');
+const { MessageAttachment } = require("discord.js");
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
@@ -23,6 +24,46 @@ client.on('message', message => {
     }
 });
 client.on('message',async message => {
+	   if (message.content.startsWith("-batslap")) {
+  const slapped = await this.cmdVerify(message, args, loadingMessage);
+    const slapper = message.author;
+    await message.channel.send(new MessageAttachment(await this.client.idiotAPI.batSlap(slapper.displayAvatarURL({format:"png", size:128}), slapped.displayAvatarURL({format:"png", size:256})), "batslap.png"));
+    await loadingMessage.delete();
+  }
+}
+	  client.on('message',async message => {
+	     if (message.content.startsWith("-modlist")) {
+	  const isStaff = (msg) => {
+	let permissions = msg.permissions.serialize();
+	return permissions.KICK_MEMBERS ||
+		permissions.BAN_MEMBERS ||
+		permissions.ADMINISTRATOR ||
+		permissions.MANAGE_CHANNELS ||
+		permissions.MANAGE_GUILD ||
+		permissions.MANAGE_MESSAGES;
+};
+
+const statusMap = {
+	online: "<:online:313956277808005120>",
+	streaming: "<:straming:313956277132853248>",
+	idle: "<:away:313956277220802560>",
+	dnd: "<:dnd:313956276893646850>",
+	offline: "<:offline:313956277237710868>"
+};
+
+const sortMap = { online: 1, idle: 2, streaming: 3, dnd: 4, offline: 5 };
+
+const getStatus = (msg, map = true) => {
+	let status = msg.guild.presences.get(msg.user.id) ? msg.guild.presences.get(mg.user.id).status : "offline";
+	return map ? statusMap[status] : status;
+};
+
+exports.run = (client, message) => {
+	let mods = message.guild.members.array().filter(msg => isStaff(msg) && !msg.user.bot).sort((a, b) => sortMap[getStatus(a, false)] > sortMap[getStatus(b, false)]);
+	mods = mods.map(msg => `${getStatus(msg)} **${msg.user.username}#${msg.user.discriminator}**`);
+	message.channel.send([`Moderators for **${message.guild.name}** :\n`].concat(mods));
+};
+client.on('message',async message => {
     if (message.content.startsWith("-mcstats")) {
 	    var cont = message.content.slice(prefix.length).split(" ");
 
@@ -35,12 +76,12 @@ let mcIP = args[0];
   let status = body.online ? "✅" : "❎";
 
   let embed = new Discord.RichEmbed()
-  .setTitle(`Information about ${mcIP}`)
+  .setTitle(`• ${mcIP} Info`)
   .setThumbnail('https://vignette.wikia.nocookie.net/minecraftpocketedition/images/f/f1/Minecraft_1.2_Logo.png/revision/latest?cb=20171204231225')
   .setColor(body.online ? config.green : config.red)
-  .addField('• Server Online', status)
-  .addField('• Players On', body.players.now, true)
-  .addField('• Max Players', body.players.max, true);
+  .addField('• السيرفر شغال', status)
+  .addField('• اللاعبين', body.players.now, true)
+  .addField('• الحد الاقصى للاعبين', body.players.max, true);
   message.channel.send(embed);
 
   return
@@ -752,6 +793,7 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 19༺༻ -تقيم @user | Rate!? Game༺༻
 20༺༻ -sug | Suggestion༺༻
 21༺༻ -nick | Change your nickname༺༻
+22༺༻ -mcstats IP | See Minecraft Server Info༺༻
 Click On ▶ To Go Administor Side
    `
 ,`
