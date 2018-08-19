@@ -54,7 +54,8 @@ exports.run = (client, message) => {
 	let mods = message.guild.members.array().filter(msg => isStaff(msg) && !msg.user.bot).sort((a, b) => sortMap[getStatus(a, false)] > sortMap[getStatus(b, false)]);
 	mods = mods.map(msg => `${getStatus(msg)} **${msg.user.username}#${msg.user.discriminator}**`);
 	message.channel.send([`Moderators for **${message.guild.name}** :\n`].concat(mods));
-};
+ }
+});
 client.on('message',async message => {
     if (message.content.startsWith("-mcstats")) {
 	    var cont = message.content.slice(prefix.length).split(" ");
