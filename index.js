@@ -43,7 +43,7 @@ client.on('message',message =>{
   var embed = new Discord.RichEmbed()
   .setColor("#000000")
   .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
-  .setThumbnail("https://i.imgur.com/GnR2unD.png")
+  .setThumbnail("https://cdn.discordapp.com/avatars/477815629684932629/89ec1c51810d79560c5baae2fcde41d2.png?size=2048")
            message.channel.send({ embed: embed });
    
   });
