@@ -73,7 +73,7 @@ client.on('message', message => {
     .setColor("0x#FF0000")
 
     message.channel.send(XPEE);
- }
+
 })
 });
 
