@@ -23,6 +23,9 @@ client.on('message', message => {
 });
 client.on('message',async message => {
     if (message.content.startsWith("-mcstats")) {
+	    var cont = message.content.slice(prefix.length).split(" ");
+
+  var args = cont.slice(1);
 let mcIP = args[0];
 
 
