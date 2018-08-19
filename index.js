@@ -1467,7 +1467,7 @@ if (message.content.startsWith(prefix + 'setstreaming')) {
 
 });
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","🌟✸🙦≼⋅welcome⋅⋟🙤✸");
+let welcomer = member.guild.channels.find("name","welcome");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -1566,8 +1566,9 @@ if(message.content.startsWith(prefix + 'sug')) {
    .setTitle(`${client.user.username}`)
    .setURL(`${client.user.avatarURL}`)
    .setDescription(`**
-__المقترح__ :\n <@${ID}>\n
-__الإقتراح__ :  \`\`\`${args.join(" ")}\`\`\`**`)
+**المقترح** :\n <@${ID}>\n
+**الإقتراح** :  \`\`\`${args.join(" ")}\`\`\`**`)
+   client.guild.channels.find("name","suggestions").send(embed);
            client.channels.get("480001296674324481").send(embed)
   message.channel.sendEmbed(embet).then(message => {message.delete(50000)})
             message.react("📩")
