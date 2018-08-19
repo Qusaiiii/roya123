@@ -23,14 +23,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-client.on('message',async message => {
-	   if (message.content.startsWith("-batslap")) {
-  const slapped = await this.cmdVerify(message, args, loadingMessage);
-    const slapper = message.author;
-    await message.channel.send(new MessageAttachment(await this.client.idiotAPI.batSlap(slapper.displayAvatarURL({format:"png", size:128}), slapped.displayAvatarURL({format:"png", size:256})), "batslap.png"));
-    await loadingMessage.delete();
-   }
-});
 	  client.on('message',async message => {
 	     if (message.content.startsWith("-modlist")) {
 	  const isStaff = (msg) => {
