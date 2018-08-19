@@ -42,7 +42,7 @@ client.on('message', message => {
         message.channel.sendFile(buff)
 	      })
 })
-});
+
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
