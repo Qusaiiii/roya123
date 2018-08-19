@@ -40,8 +40,7 @@ client.on('message', message => {
       canvas.toBuffer((err, buff) => {
         message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
         message.channel.sendFile(buff)
-   }
-});
+  
 client.on('message', message => {
      if (message.content === "السلام عليكم") {
       const embed = new Discord.RichEmbed()
