@@ -38,7 +38,6 @@ client.on('message', message => {
       ctx.font = "18px Papyrus";
       ctx.fillText(user, 275, 80)
       canvas.toBuffer((err, buff) => {
-        if (err) return console.log(err);
         message.channel.send("**" + message.author.username + "** *has added*  **" + user + "** *to their death note*")
         message.channel.sendFile(buff)
    }
