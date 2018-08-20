@@ -508,7 +508,7 @@ sql.open("./score.sqlite");
     if (!row) {
       sql.run("INSERT INTO scores (userId, points, level) VALUES (?, ?, ?)", [message.author.id, 1, 0]);
     } else {
-      let curLevel = Math.floor(0.1 * Math.sqrt(row.points + 1));
+      let curLevel = Math.floor(0.5 * Math.sqrt(row.points + 1));
       if (curLevel > row.level) {
         row.level = curLevel;
         sql.run(`UPDATE scores SET points = ${row.points + 1}, level = ${row.level} WHERE userId = ${message.author.id}`);
@@ -559,7 +559,7 @@ const w = ['./levelup.png'];
                         ctx.fillStyle = "#FFFFFF";
                         ctx.textAlign = "center";
                         ctx.fillText(`LVL ${curLevel}`, 213, 190);
-message.channel.send(`**:up: ${message.author.username} | leveled up!**`)
+message.channel.send(`**:up: | ${message.author.username}leveled up!**`)
 message.channel.sendFile(canvas.toBuffer())
 })
 })
