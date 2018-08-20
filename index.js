@@ -476,7 +476,7 @@ delete warn[message.author.id];
 
   }
 });
-
+client.on('message', message => {
   if(message.content.split(' ')[0] == prefix + 'bc') {
             if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('⚠ | **لا يوجد لديك صلاحية **');
         if (message.author.id === client.user.id) return;
