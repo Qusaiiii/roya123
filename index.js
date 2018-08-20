@@ -664,6 +664,7 @@ const zead = [
    message.react("??")
   }
 });
+client.on('message', message => { 
  sql.open("./score.sqlite");
   sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
     if (!row) {
