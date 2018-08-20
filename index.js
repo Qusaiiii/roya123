@@ -663,33 +663,83 @@ const zead = [
    message.react("??")
   }
 });
-let points = JSON.parse(fs.readFileSync("./level.json", "utf8"));
- client.on("message", message => {
-   if (!message.content.startsWith(prefix)) return;
-   if (message.author.bot) return; 
+ sql.open("./score.sqlite");
+  sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
+    if (!row) {
+      sql.run("INSERT INTO scores (userId, points, level) VALUES (?, ?, ?)", [message.author.id, 1, 0]);
+    } else {
+      let curLevel = Math.floor(0.1 * Math.sqrt(row.points + 1));
+      if (curLevel > row.level) {
+        row.level = curLevel;
+        sql.run(`UPDATE scores SET points = ${row.points + 1}, level = ${row.level} WHERE userId = ${message.author.id}`);
+var Canvas = require('canvas')
+var jimp = require('jimp')
 
-   if (!points[message.author.id]) points[message.author.id] = {
-     points: 0,
-     level: 0
-   };
-   let userData = points[message.author.id];
-   userData.points++;
- 
-   let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
-   if (curLevel > userData.level) {
-     // Level up message
-     userData.level = curLevel;
-     message.channel.send(`**🆙 | ${message.author.username} You leveled up to ${curLevel}**`);
-   }
-   if (message.content.startsWith(prefix + "level")) {
-     message.channel.send(`**${message.author.username} You are level is ${userData.level}**`);
-   }
-   fs.writeFile("./level.json", JSON.stringify(points), (err) => {
-     if (err) console.error(err)
-   });
- 
- });
+const w = ['./levelup.png'];
 
+        let Image = Canvas.Image,
+            canvas = new Canvas(401, 202),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 401, 202);
+
+})
+
+                let url = message.author.displayAvatarURL.endsWith(".webp") ? message.author.displayAvatarURL.slice(5, -20) + ".png" : message.author.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+
+                        //Avatar
+                        let Avatar = Canvas.Image;
+                        let ava = new Avatar;
+                        ava.src = buf;
+                        ctx.drawImage(ava, 152, 27, 95, 95);
+                        
+                                                //wl
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '25px';
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.textAlign = "center";
+                        ctx.fillText("LEVEL UP!", 210, 154);
+                        //ur name
+                        ctx.font = '20px Arial Bold';
+                        ctx.fontSize = '28px';
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.textAlign = "center";
+                        ctx.fillText(`LVL ${curLevel}`, 213, 190);
+message.channel.send(`**:up: ${message.author.username} | leveled up!**`)
+message.channel.sendFile(canvas.toBuffer())
+})
+})
+        
+      };
+      sql.run(`UPDATE scores SET points = ${row.points + 1} WHERE userId = ${message.author.id}`);
+    }
+  }).catch(() => {
+    console.error;
+    sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, points INTEGER, level INTEGER)").then(() => {
+      sql.run("INSERT INTO scores (userId, points, level) VALUES (?, ?, ?)", [message.author.id, 1, 0]);
+    });
+  });
+
+  if (message.content.startsWith(prefix + "level")) {
+    sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
+      if (!row) return message.reply("Your current level is 0");
+      message.reply(`Your current level is ${row.level}`);
+    });
+  } 
 let ar = JSON.parse(fs.readFileSync(`./autorole.json`, `utf8`))
 client.on('guildMemberAdd', member => {
   if(!ar[member.guild.id]) ar[member.guild.id] = {
