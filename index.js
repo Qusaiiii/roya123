@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 	const prefix = "-"	
 	const moment = require('moment');
         const ytdl = require("ytdl-core");
+        const sql = require('sqlite')
         const ms = require("ms");
         const Canvas = require('canvas');
         const config = require('./config.json');
