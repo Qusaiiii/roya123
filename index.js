@@ -581,7 +581,8 @@ message.channel.sendFile(canvas.toBuffer())
  });
 
 
-})
+}
+	})
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
