@@ -497,8 +497,8 @@ client.on('message', message => {
                 m.send({embed: bc}).catch(err => {console.log("[Broadcast] Couldn't send message to this user because he's closing his DM!")});
             });
             message.channel.send("**:loudspeaker: | يتم إرسال البرودكسات**");
-        }
-        }
+       }
+});
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
