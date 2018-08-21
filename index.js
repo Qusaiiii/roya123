@@ -550,13 +550,13 @@ const w = ['./levelup.png'];
                                                 //wl
                         ctx.font = '20px Arial';
                         ctx.fontSize = '25px';
-                        ctx.fillStyle = "#99aab5";
+                        ctx.fillStyle = "#b2b4b7";
                         ctx.textAlign = "center";
                         ctx.fillText("LEVEL UP!", 210, 154);
                         //ur name
                         ctx.font = '20px Arial Bold';
                         ctx.fontSize = '28px';
-                        ctx.fillStyle = "#2c2f33";
+                        ctx.fillStyle = "#8b8d91";
                         ctx.textAlign = "center";
                         ctx.fillText(`LVL ${curLevel}`, 213, 190);
 message.channel.send(`**:up: | ${message.author.username}leveled up!**`)
@@ -829,49 +829,56 @@ Role : __${ar[message.guild.id].role}__`)
 })
 client.on('message', message => {
 if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
-    let pages = [`
-1༺༻  #color  | Select Color༺༻
-2༺༻  -stats | Shows Bot Info༺༻
-3༺༻  -new | Create New Ticket༺༻
-4༺༻  -close | Close the ticket༺༻
-5༺༻  -gRole RoleName | Show The stats of the role༺༻
-6༺༻  -play | Play music༺༻
-7༺༻  -autorole | AutoRole༺༻
-7༺༻  -avatar | Avatar༺༻
-9༺༻  -level | Level༺༻
-10༺༻ -كت تويت | Cut-Tweet༺༻
-10༺༻ -Discrim | Discrim༺༻
-11༺༻ -id | ID༺༻
-12༺༻ -invites | see your Invites༺༻
-12༺༻ -server | see Server Info༺༻
-13༺༻ -topinv | see The Top invites༺༻
-14༺༻ -مريم | Mariam Game༺༻
-15༺༻ -ماين كرافت | MineCraft Game༺༻
-16༺༻ -هل تعلم | Did You Know? Game༺༻
-17༺༻ -اسئلني | Questions game!? Game༺༻
-18༺༻ -فكك | Fkk Game༺༻
-19༺༻ -تقيم @user | Rate!? Game༺༻
-20༺༻ -sug | Suggestion༺༻
-21༺༻ -nick | Change your nickname༺༻
-22༺༻ -mcstats IP | See Minecraft Server Info༺༻
-23༺༻ -inv | For Invite the bot༺༻
-Click On ▶ To Go Administor Side
-   `
-,`
-:closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
-1༺    -clear | Clear The Chat༺༻
-2༺༻  -mute | Msg Everyone In The Server༺༻
-3༺༻  -tempban | Kick With Reson༺༻
-4༺༻  -warn | Ban With Reason༺༻
-5༺༻  -bc | BroadCast༺༻
-6༺༻  -cc Number | Create colors with number like #cc 100 this will create for you 100 color༺༻
-7༺༻  -ban | BroadCast༺༻
-8༺༻  -say | Make the bot talkt༺༻
-9༺༻  -addrole | AddRole༺༻
-Click On ▶ To Go To Bot Info
-   `,`
-1༺༻  Bot By:ImRoyal_Raddar༺༻
-   `]
+    let pages = ["
+╭╮╱╭╮
+┃┃╱┃┃
+┃╰━╯┣━━┳━╮╭━━╮
+┃╭━╮┃╭╮┃╭╮┫╭╮┃
+┃┃╱┃┃╭╮┃┃┃┃╰╯┣╮
+╰╯╱╰┻╯╰┻╯╰┻━━┻╯
+
+
+**بأمكانك دعوة البوت من **
+**https://discordapp.com/oauth2/authorize?client_id=477815629684932629&permissions=8&scope=bot**
+
+
+**الأوامر العامة **
+**#color : لتغير لونك فالسيرفر **
+**-id : الهوية **
+**-topinv : لرؤية المتصدرين فالدعوات **
+**-invites : لرؤية عدد دعواتك **
+**-discrim : لرؤية الاشخاص الذين لديهم نفس التاق **
+**-mcstats : لرؤية معلومات اي سيرفر ماين كرافت **
+**-nick : لتغير اسمك فالسيرفر **	 
+**-تقيم : for give a rate **
+**-اسئلني : Question game **
+**-server : لرؤية معلومات السيرفر **
+**-gRole : لمعرفة معلومات رتبة معينة **
+**-مريم : Mariam game **
+**-ماين كرافت : MC Game **
+**-level : لرؤية لفلك **
+**-avatar : لروية صورتك **
+**-stats : معلومات البوت **
+**-كت تويت : Cut-Tweet**
+**-new : لفتح تذكرة جديدة **
+**-هل تعلم : Did you know?**
+**-close : لغلق التذكرة **
+		 
+		 
+**اوامر ادارة السيرفر **
+**/mute **
+**/unmute **
+**-clear **
+**-bc **
+**-addrole **
+**-cc Number of colors**
+**-ban **
+**-tempban **
+ "
+,"
+
+   ","
+   "]
     let page = 1;
 
     let embed = new Discord.RichEmbed()
