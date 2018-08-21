@@ -585,10 +585,29 @@ message.channel.sendFile(canvas.toBuffer())
 	})
 client.on('message',message => {
 if (message.content.startsWith(prefix + 'ping')) {
-message.channel.sendMessage("**Pinging...**").then((message)=> {
+message.channel.sendMessage("**pong.**").then((message)=> {
 
-message.edit(`**Time Taken :ping_pong:** \`${Date.now() - message.createdTimestamp} ms\`` + `\n **Discord API :heartpulse:** \`${client.pings[1]} ms\``);
+message.edit(`**Time Taken :ping_pong:** \`${Date.now() - message.createdTimestamp} ms\`` + `\n **Discord API** \`${client.pings[1]} ms\``);
  });
+
+
+}
+	})
+client.on('message',message => {
+    if(message.content === prefix + "invite") {
+                    let embed = new Discord.RichEmbed ()
+                    embed.setTitle("**:arrow_right: Invite Hano.**")
+                    .setURL("https://discordapp.com/oauth2/authorize?client_id=477815629684932629&permissions=8&scope=bot");
+                   message.channel.sendEmbed(embed);
+               });
+
+
+}
+	})
+	client.on('message',message => {
+                  if (message.content === prefix + "support") {
+                  message.channel.send("**سيرفر الدعم \n https://discord.gg/vsPnqs**");
+             });
 
 
 }
@@ -845,6 +864,8 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 20༺༻ -sug | Suggestion༺༻
 21༺༻ -nick | Change your nickname༺༻
 22༺༻ -mcstats IP | See Minecraft Server Info༺༻
+23༺༻ -inv | For Invite the bot༺༻
+24༺༻ -support | For Server support༺༻
 Click On ▶ To Go Administor Side
    `
 ,`
