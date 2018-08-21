@@ -599,11 +599,8 @@ client.on('message',message => {
                     embed.setTitle("**:arrow_right: Invite Hano.**")
                     .setURL("https://discordapp.com/oauth2/authorize?client_id=477815629684932629&permissions=8&scope=bot");
                    message.channel.sendEmbed(embed);
-               });
-
-
-}
-	})
+           }
+});
 	
 client.on('message',function(message) {
   if(!message.channel.guild) return;
