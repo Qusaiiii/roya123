@@ -604,14 +604,7 @@ client.on('message',message => {
 
 }
 	})
-	client.on('message',message => {
-                  if (message.content === prefix + "support") {
-                  message.channel.send("**سيرفر الدعم \n https://discord.gg/vsPnqs**");
-             });
-
-
-}
-	})
+	
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
@@ -865,7 +858,6 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 21༺༻ -nick | Change your nickname༺༻
 22༺༻ -mcstats IP | See Minecraft Server Info༺༻
 23༺༻ -inv | For Invite the bot༺༻
-24༺༻ -support | For Server support༺༻
 Click On ▶ To Go Administor Side
    `
 ,`
