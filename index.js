@@ -829,7 +829,7 @@ Role : __${ar[message.guild.id].role}__`)
 })
 client.on('message', message => {
 if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
-    let pages = ["
+    let pages = ['
 ╭╮╱╭╮
 ┃┃╱┃┃
 ┃╰━╯┣━━┳━╮╭━━╮
@@ -874,11 +874,11 @@ if (message.content.startsWith('-help')) { /// This is The DMS Code Send The Hel
 **-cc Number of colors**
 **-ban **
 **-tempban **
- "
-,"
+ '
+,'
 
-   ","
-   "]
+   ','
+   ']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
