@@ -550,13 +550,13 @@ const w = ['./levelup.png'];
                                                 //wl
                         ctx.font = '20px Arial';
                         ctx.fontSize = '25px';
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#99aab5";
                         ctx.textAlign = "center";
                         ctx.fillText("LEVEL UP!", 210, 154);
                         //ur name
                         ctx.font = '20px Arial Bold';
                         ctx.fontSize = '28px';
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#2c2f33";
                         ctx.textAlign = "center";
                         ctx.fillText(`LVL ${curLevel}`, 213, 190);
 message.channel.send(`**:up: | ${message.author.username}leveled up!**`)
