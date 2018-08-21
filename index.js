@@ -583,6 +583,16 @@ message.channel.sendFile(canvas.toBuffer())
 
 }
 	})
+client.on('message',message => {
+if (message.content.startsWith(prefix + 'ping')) {
+message.channel.sendMessage("**Pinging...**").then((message)=> {
+
+message.edit(`**Time Taken :ping_pong:** \`${Date.now() - message.createdTimestamp} ms\`` + `\n **Discord API :heartpulse:** \`${client.pings[1]} ms\``);
+ });
+
+
+}
+	})
 client.on('message',function(message) {
   if(!message.channel.guild) return;
 
